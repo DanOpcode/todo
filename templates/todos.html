@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo App</title>
+</head>
+<body>
+	<h1>Todos</h1>
+	<ul>
+		{{range .}}
+		<li>{{.Title}}: {{.Description}} {{if .Done}}(Done){{else}}(Pending){{end}}</li>
+		{{end}}
+	</ul>
+</body>
+</html>

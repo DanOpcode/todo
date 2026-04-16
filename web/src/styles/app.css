@@ -1,0 +1,167 @@
+:root {
+  --bg-start: #efe7d4;
+  --bg-end: #d8e8e7;
+  --panel-bg: rgba(255, 255, 255, 0.88);
+  --ink: #1d2f36;
+  --muted: #587179;
+  --accent: #0d9b7a;
+  --accent-strong: #0b7f64;
+  --danger: #ba3d22;
+  --line: #c8d8d5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.5), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(17, 153, 127, 0.2), transparent 35%),
+    linear-gradient(150deg, var(--bg-start), var(--bg-end));
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel-bg);
+  box-shadow: 0 14px 40px rgba(13, 36, 40, 0.15);
+  padding: 1.25rem;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.subtitle {
+  margin: 0.35rem 0 1.25rem;
+  color: var(--muted);
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form-actions,
+.item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #f9fffe;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: var(--accent-strong);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button.secondary {
+  background: #e8f0ee;
+  color: #24474a;
+}
+
+button.secondary:hover {
+  background: #d8e5e2;
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.danger:hover {
+  background: #9d2f19;
+}
+
+.todo-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.todo-list li {
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.7rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.todo-list li.done {
+  border-color: rgba(13, 155, 122, 0.45);
+}
+
+.todo-list p {
+  margin: 0.4rem 0 0;
+  color: #385a5c;
+}
+
+.error {
+  color: var(--danger);
+  margin: 0.8rem 0 0;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 1rem 0.75rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+}

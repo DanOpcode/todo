@@ -13,22 +13,7 @@ type Todo struct {
 }
 
 func main() {
-	tmpl := template.Must(template.New("todos").Parse(`
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Todo App</title>
-</head>
-<body>
-	<h1>Todos</h1>
-	<ul>
-		{{range .}}
-		<li>{{.Title}}: {{.Description}} {{if .Done}}(Done){{else}}(Pending){{end}}</li>
-		{{end}}
-	</ul>
-</body>
-</html>
-`))
+	tmpl := template.Must(template.ParseFiles("templates/todos.html"))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		todos := []Todo{
@@ -36,7 +21,9 @@ func main() {
 			{Title: "Build todo app", Description: "Create a todo web app", Done: false},
 			{Title: "Deploy app", Description: "Deploy to production", Done: false},
 		}
-		tmpl.Execute(w, todos)
+		if err := tmpl.Execute(w, todos); err != nil {
+			http.Error(w, "failed to render todos", http.StatusInternalServerError)
+		}
 	})
 
 	log.Println("Server starting on :8080")
